@@ -8,7 +8,7 @@ void printOptionMenu() {
    cout << "-------------------" << endl;
    cout << "Enter 'm' to simulate motion." << endl;
    cout << "Enter 'p' to simulate password entry." << endl;
-   cout << "Enter 't' to simulate 30 seconds pasing." << endl;
+   cout << "Enter 'h' to heartbeat." << endl;
    cout << "Enter 'q' to exit program." << endl;
    cout << "-------------------" << endl;
    cout << endl;
@@ -19,8 +19,9 @@ int main() {
    char c{};
    while (c != 'q') {
       printOptionMenu();
-      state_controller.PrintCurrentState();
+      //state_controller.PrintCurrentState();
       cin >> c;
+      std::cout << "Before Command: " << state_controller.getCurrentState() << endl;
 
       switch (c) {
       case ('m'):
@@ -32,15 +33,14 @@ int main() {
          cout << "Simulating Password Entered Correctly" << endl;
          state_controller.receivedPassword();
          break;
-
-      case ('t'):
-         cout << "Simulating 30 seconds passing" << endl;
-         state_controller.timeExpired();
-         break;
-
+      case('h'):
+          cout << "Heartbeat occurred." << endl;
+          state_controller.heartBeat();
+          break;
       case ('q'):
          cout << "Quitting! Thank you!" << endl;
          break;
       }
+      std::cout << "After Command: " << state_controller.getCurrentState() << endl;
    }
 }

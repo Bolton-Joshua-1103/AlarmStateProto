@@ -5,11 +5,11 @@
 #include "Alarm.h"
 #include "Disarmed.h"
 #include "state_handler_defs.h"
-#include "ControllerCallBack.h"
+#include "IControllerCallBack.h"
 #include <map>
 
 
-class Controller : ControllerCallBack {
+class Controller : IControllerCallBack {
 public:
 
    Disarmed disarmed_handler{ *this };
@@ -24,14 +24,18 @@ public:
    Controller();
 
    void PrintCurrentState();
-   //void ChangeCurrentState(state_enum);
-
+   std::string getCurrentState();
 
    void receivedMotion(); //Will Imitate the motion sensor sensing by calling: current_state_handler-> receivedMotion();
    void receivedPassword(); //Will imitate the password being entered correctly by calling: current_state_hand->receivedPassword();
-   void timeExpired(); //Will imitate 30 seconds passing
+   void heartBeat();
 
+
+   // IControllerCallBack implmentation
    void setHandler(state_enum new_state_enum) override;
    void soundHorn(bool sound_on) override;
+   Stopwatch& getStopwatch() override;
+private:
+   Stopwatch stopwatch{};
 };
 

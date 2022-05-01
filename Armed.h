@@ -3,7 +3,7 @@
 
 class Armed : public State_Base_Handler {
 public:
-   Armed(ControllerCallBack& _call_back) 
+   Armed(IControllerCallBack& _call_back) 
       : State_Base_Handler(state_enum::armed, _call_back) {}
 
    void receivedPassword() override {
@@ -11,6 +11,9 @@ public:
    }; // Will return disarmed_state ref
 
    void receivedMotion() override {
+      Stopwatch& stopwatch = call_back.getStopwatch();
+      stopwatch.reset();
+      stopwatch.start();
       call_back.setHandler(state_enum::pending_alarm);
    }; // Will return Pending_Alarm ref
    void printStateInfo() override {
