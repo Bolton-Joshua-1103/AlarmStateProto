@@ -37,5 +37,6 @@ public:
    Stopwatch& getStopwatch() override;
 private:
    Stopwatch stopwatch{};
+   void printOptionMenu();
 };
 

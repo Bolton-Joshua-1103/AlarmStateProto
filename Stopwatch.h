@@ -64,10 +64,10 @@ private:
 inline std::ostream& operator<< (std::ostream& ostr, const Stopwatch& stopwatch) {
    ostr << stopwatch.elapsed().count();
    if (stopwatch.isRunning()) {
-      ostr << " Running: Yes";
+      // ostr << " Running: Yes";
    }
    else {
-      ostr << " Running: No";
+      // ostr << " Running: No";
    }
    return ostr;
 }

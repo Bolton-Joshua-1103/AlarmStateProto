@@ -23,7 +23,7 @@ class PendingAlarm : public State_Base_Handler
    };
 
    void printStateInfo() {
-      std::cout << "***Alarm will sound in 30 seconds...***" << std::endl;
+      std::cout << "***Alarm will sound in " << expiration_time << " seconds...***" << std::endl;
    };
 };
 

@@ -11,9 +11,10 @@ public:
       //std::cout << "Alarm has been turned off!" << std::endl;
       call_back.soundHorn(false);
       call_back.setHandler(state_enum::disarmed);
-   }; // Will return disarmed_state ref
+   }; 
    void printStateInfo() override {
       std::cout << "-----ALARM ACTIVE-----" << std::endl;
+      call_back.soundHorn(true);
    };
 };
 

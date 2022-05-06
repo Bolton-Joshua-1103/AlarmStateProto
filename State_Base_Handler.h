@@ -6,7 +6,7 @@
 class State_Base_Handler {
 public:
 
-   Stopwatch::Resolution expiration_time{ 15s };
+   Stopwatch::Resolution expiration_time{ 10s };
    state_enum enum_name{ state_enum::disarmed };
    IControllerCallBack& call_back;
    State_Base_Handler(state_enum enum_state, IControllerCallBack& _call_back)

@@ -2,6 +2,7 @@
 #include <iostream>
 #include <algorithm>
 #include <iterator>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -31,16 +32,29 @@ void Controller::receivedMotion() {
 void Controller::receivedPassword() {
    current_state_handler->receivedPassword();
 }
-
+void Controller::printOptionMenu() {
+   //cout << endl;
+   cout << "-------------------" << endl;
+   cout << "Enter 'm' to simulate motion." << endl;
+   cout << "Enter 'p' to simulate password entry." << endl;
+   cout << "Enter 'q' to exit program." << endl;
+   cout << "-------------------" << endl;
+   cout << endl;
+}
 void Controller::heartBeat() {
+   // every heart beat we should clear the screen. Print the menu. Print the state. Print the stopwatch
+   system("CLS");
+   printOptionMenu();
    std::cout << "Current state: " << to_string(current_state_handler->enum_name) << endl;
    std::cout << "Current stopwatch: " << stopwatch << std::endl;
+   PrintCurrentState();
    current_state_handler->heartBeat();
-}
+
+  }
 
 void Controller::setHandler(state_enum new_state_enum) {
    if (state_map.find(new_state_enum)->second == current_state_handler) {
-      cout << "No State Change..." << endl;
+      //cout << "No State Change..." << endl;
    }
    else {
       current_state_handler = state_map.find(new_state_enum)->second; //Assign current state to new desired state

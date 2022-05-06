@@ -22,7 +22,7 @@ public:
       }
    };
    void printStateInfo() {
-      std::cout << "***Alarm is being armed. 30 seconds until sensor is active.***" << std::endl;
+      std::cout << "***Alarm is being armed. " << expiration_time << " seconds until sensor is active.***" << std::endl;
    };
 };
 

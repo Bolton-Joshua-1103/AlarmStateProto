@@ -1,29 +1,23 @@
 #include <iostream>
 #include "Controller.h"
+#include "Framework.hpp"
+#include "main.h"
 
 using namespace std;
 
-void printOptionMenu() {
-   cout << endl;
-   cout << "-------------------" << endl;
-   cout << "Enter 'm' to simulate motion." << endl;
-   cout << "Enter 'p' to simulate password entry." << endl;
-   cout << "Enter 'h' to heartbeat." << endl;
-   cout << "Enter 'q' to exit program." << endl;
-   cout << "-------------------" << endl;
-   cout << endl;
+Controller state_controller{};
+
+void alarmHeartBeat() {
+   //cout << "...heart beat..." << endl;
+   state_controller.heartBeat();
 }
 
-int main() {
-   Controller state_controller{};
-   char c{};
-   while (c != 'q') {
-      printOptionMenu();
-      //state_controller.PrintCurrentState();
-      cin >> c;
+ void alarmCmd(char c)
+{
       std::cout << "Before Command: " << state_controller.getCurrentState() << endl;
 
       switch (c) {
+
       case ('m'):
          cout << "Simulating Motion Detected" << endl;
          state_controller.receivedMotion();
@@ -33,14 +27,19 @@ int main() {
          cout << "Simulating Password Entered Correctly" << endl;
          state_controller.receivedPassword();
          break;
-      case('h'):
-          cout << "Heartbeat occurred." << endl;
-          state_controller.heartBeat();
-          break;
+
       case ('q'):
          cout << "Quitting! Thank you!" << endl;
+         Framework::stopFramework(); // Is this what I do?
          break;
       }
       std::cout << "After Command: " << state_controller.getCurrentState() << endl;
-   }
 }
+int main() {
+   Framework::setKeyHandler(alarmCmd);
+   Framework::setHeartBeatHandler(alarmHeartBeat);
+   Framework::startFramework();
+
+
+}
+

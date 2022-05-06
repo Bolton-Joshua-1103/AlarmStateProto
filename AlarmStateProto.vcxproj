@@ -88,6 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -140,14 +141,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Controller.cpp" />
+    <ClCompile Include="Framework.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Alarm.h" />
     <ClInclude Include="Armed.h" />
     <ClInclude Include="Controller.h" />
+    <ClInclude Include="Framework.hpp" />
     <ClInclude Include="IControllerCallBack.h" />
     <ClInclude Include="Disarmed.h" />
+    <ClInclude Include="main.h" />
     <ClInclude Include="PendingAlarm.h" />
     <ClInclude Include="PendingArmed.h" />
     <ClInclude Include="State_Base_Handler.h" />
