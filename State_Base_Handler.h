@@ -15,8 +15,8 @@ public:
       enum_name = enum_state;
    }
    // maybe can get rid of call_back calls
-   virtual void receivedMotion() { call_back.setHandler(enum_name); }; //Will return the current state in the base class
-   virtual void receivedPassword() { call_back.setHandler(enum_name); }; //Will return the current state in the base class
-   virtual void heartBeat() { call_back.setHandler(enum_name); };
-   virtual void printStateInfo() = 0;
+   virtual void receivedMotion() { call_back.setHandler(enum_name); }; //Will return the current state
+   virtual void receivedPassword() { call_back.setHandler(enum_name); }; //Will return the current state
+   virtual void heartBeat() { call_back.setHandler(enum_name); }; //Will return the current state
+   virtual void printStateInfo() = 0; //Pure virtual function
 };

@@ -39,7 +39,5 @@ int main() {
    Framework::setKeyHandler(alarmCmd);
    Framework::setHeartBeatHandler(alarmHeartBeat);
    Framework::startFramework();
-
-
 }
 

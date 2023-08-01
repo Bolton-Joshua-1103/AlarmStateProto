@@ -26,7 +26,6 @@ public:
 				front_event = Framework::event_que.front();
 				Framework::event_que.pop_front();
 			}
-
 			front_event();
 		}
 	}
@@ -58,7 +57,7 @@ private:
 	static std::atomic<bool> done;
 
 
-	static std::shared_ptr<std::thread> keyboard_thread_ptr; //RAII shenanigans
+	static std::shared_ptr<std::thread> keyboard_thread_ptr;
 	static std::shared_ptr<std::thread> heartbeat_thread_ptr;
 
 
