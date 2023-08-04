@@ -11,6 +11,6 @@ This project utilizes many programming features to increase efficiency and robus
 - Concurrent threads that have a 'producer\consumer' relationship with a common container.
 - By using lock guards, mutexes, and RAII principles, concurrent threads are able to perform operations on a common container.
 - Counting Semaphores are used to stop busy waiting conditions
-- All states are user defined types that inherit from a state_base_handler. This state_base_handler has virtual methods that allow each state is able to handle all inputs (even if no affect is desired from a particular state)
-- Utilizes a design pattern of CALL BACKS, by using these call backs each state is able to request/access Controller level services like, sounding the alarm if a state requires it, or accessing a stopwatch for timed events. This allows each state to provide features without decentralizing services.
+- All states are user defined types that publically inherit from a state_base_handler. Using polymorphic principles the state_base_handler has virtual methods that allow each state to be able to handle all inputs (even if no affect is desired from a particular state)
+- Utilizes a design pattern of CALL BACKS, by using these call backs each state is able to request/access Controller level services like, sounding the alarm, or accessing a stopwatch for timed events. This allows each state to provide features while maintaining centralized services at the Controller level.
 - The controller uses an encapsulated Stopwatch class that was developed for this application. This class uses the std::chrono library inorder to provide services similar to stop watch. You can stop and start the stop watch as well as view the duration and reset the duration.
